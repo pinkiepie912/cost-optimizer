@@ -1,7 +1,18 @@
 from __future__ import annotations
 
+import os
+import json
+import boto3
+
 from dataclasses import dataclass
 from typing import Dict, List
+
+from dotenv import load_dotenv
+
+try:
+    load_dotenv(".env")
+except:
+    pass
 
 
 @dataclass()
@@ -25,7 +36,12 @@ class Config:
         )
 
 
-def load_from_env() -> Config:
-    params = {}
+def load_from_env(secret_id: str, region: str) -> Config:
+    if os.getenv("ENV") == "local":
+        return Config.of({k: v for k, v in os.environ.items()})
 
-    return Config.of(params)
+    _client = boto3.client("secretmanager", region_name=region)
+    res = _client.get_secret_value(SecretId=secret_id)
+    values = json.loads(res["SecretString"])
+
+    return Config.of(values)
