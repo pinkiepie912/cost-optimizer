@@ -5,7 +5,7 @@ import boto3
 from typing import Dict, List
 from dataclasses import dataclass
 
-__all__ = ["E2Handler"]
+__all__ = ["EC2Handler"]
 
 
 @dataclass()
@@ -43,7 +43,7 @@ class DescribeRes:
         return cls(instances=instances)
 
 
-class E2Handler:
+class EC2Handler:
     def __init__(self, region: str):
         self._client = boto3.client("ec2", region_name=region)
 
