@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import boto3
+from pprint import pprint
 
 from typing import Dict, List
 from dataclasses import dataclass
@@ -49,6 +50,7 @@ class AutoScalingGroupHandler:
         self, name_tags: List[str], env_tags: List[str], target_cnt: int
     ) -> None:
         groups = self._get_autoscaling_groups(env_tags=env_tags, name_tags=name_tags)
+        pprint(groups)
 
         for group in groups:
             self._client.set_desired_capacity(

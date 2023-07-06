@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import boto3
+from pprint import pprint
 
 from typing import Dict, List
 from dataclasses import dataclass
@@ -49,10 +50,12 @@ class EC2Handler:
 
     def start_instances(self, name_tags: List[str], env_tags: List[str]) -> None:
         instances = self._get_ec2_instances(env_tags=env_tags, name_tags=name_tags)
+        pprint(instances)
         self._client.start_instances(InstanceIds=[row.instance_id for row in instances])
 
     def stop_instances(self, name_tags: List[str], env_tags: List[str]) -> None:
         instances = self._get_ec2_instances(env_tags=env_tags, name_tags=name_tags)
+        pprint(instances)
         self._client.stop_instances(InstanceIds=[row.instance_id for row in instances])
 
     def _get_ec2_instances(
