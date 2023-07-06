@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "projectc-dev-server-cost-optimizer"
+name = "cost-optimizer"
 version = "0.1.0"
 description = ""
 authors = ["pinkiepie <pinkiepies0912@gmail.com>"]
 readme = "README.md"
-packages = [{include = "projectc_dev_server_cost_optimizer"}]
+packages = [{include = "cost_optimizer"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
