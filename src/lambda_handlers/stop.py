@@ -1,7 +1,7 @@
-from config import load_from_env
-from infra_handlers.auto_scalining import AutoScalingGroupHandler
-from infra_handlers.ec2 import EC2Handler
-from infra_handlers.rds import RdsHandler
+from ..config import load_from_env
+from ..infra_handlers.auto_scalining import AutoScalingGroupHandler
+from ..infra_handlers.ec2 import EC2Handler
+from ..infra_handlers.rds import RdsHandler
 
 
 def stop_handler(event, context):
