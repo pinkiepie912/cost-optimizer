@@ -1,0 +1,54 @@
+service: cost-optimizer 
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-northeast-2
+  stage: production
+  deploymentMethod: direct
+  iam:
+    role: ${env:ROLE} 
+  vpc:
+    securityGroupIds:
+      - ${env:SUBNET_GROUP_ID} 
+    subnetIds:
+      - ${env:SUBNET_ID} 
+  ecr:
+    images:
+      baseimage:
+        uri: ${env:ECR_URI} 
+
+functions:
+  start:
+    events:
+      - schedule: cron(30 23 ? * MON-FRI *)
+    environment:
+      AUTOSCALING_ENV_TAGS: ${env:AUTOSCALING_ENV_TAGS}
+      AUTOSCALING_NAME_TAGS: ${env:AUTOSCALING_NAME_TAGS}
+      EC2_NAME_TAGS: ${env:EC2_NAME_TAGS}
+      EC2_ENV_TAGS: ${env:EC2_ENV_TAGS}
+      RDS_IDENTIFIER: ${env:RDS_IDENTIFIER}
+      REGION: ap-northeast-2
+    image:
+      name: baseimage
+      command:
+        - src.main.start_handler
+    timeout: 900
+
+  stop:
+    events:
+      - schedule: cron(0 12 ? * MON-FRI *)
+    environment:
+      AUTOSCALING_ENV_TAGS: ${env:AUTOSCALING_ENV_TAGS}
+      AUTOSCALING_NAME_TAGS: ${env:AUTOSCALING_NAME_TAGS}
+      EC2_NAME_TAGS: ${env:EC2_NAME_TAGS}
+      EC2_ENV_TAGS: ${env:EC2_ENV_TAGS}
+      RDS_IDENTIFIER: ${env:RDS_IDENTIFIER}
+      REGION: ap-northeast-2
+    image:
+      name: baseimage
+      command:
+        - src.main.stop_handler
+    timeout: 900

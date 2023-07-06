@@ -17,3 +17,5 @@ __pypackages__/
 
 .serverless
 node_modules/
+
+deploy.sh
