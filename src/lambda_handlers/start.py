@@ -4,7 +4,7 @@ from infra_handlers.ec2 import EC2Handler
 from infra_handlers.rds import RdsHandler
 
 
-def stop_handler(event, context):
+def start_handler(event, context):
     conf = load_from_env()
 
     auto_scalining_handler = AutoScalingGroupHandler(conf.region)
