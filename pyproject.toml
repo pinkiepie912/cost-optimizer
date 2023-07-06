@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "projectc_dev_server_cost_optimizer"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 boto3 = "^1.27.1"
 python-dotenv = "^1.0.0"
 
