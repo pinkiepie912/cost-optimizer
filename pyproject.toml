@@ -9,6 +9,7 @@ packages = [{include = "projectc_dev_server_cost_optimizer"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 boto3 = "^1.27.1"
+python-dotenv = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
