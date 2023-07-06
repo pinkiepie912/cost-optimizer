@@ -11,6 +11,14 @@ python = "^3.10"
 boto3 = "^1.27.1"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+mypy = "^1.4.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88 
+target-version = ['py38', 'py39', 'py310']
