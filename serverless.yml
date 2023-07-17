@@ -30,6 +30,8 @@ functions:
       EC2_NAME_TAGS: ${env:EC2_NAME_TAGS}
       EC2_ENV_TAGS: ${env:EC2_ENV_TAGS}
       RDS_IDENTIFIER: ${env:RDS_IDENTIFIER}
+      ECS_CLUSTER_ARN: ${env:ECS_CLUSTER_ARN}
+      ECS_SERVICE_ARNS: ${env:ECS_SERVICE_ARNS}
       REGION: ap-northeast-2
     image:
       name: baseimage
@@ -46,6 +48,8 @@ functions:
       EC2_NAME_TAGS: ${env:EC2_NAME_TAGS}
       EC2_ENV_TAGS: ${env:EC2_ENV_TAGS}
       RDS_IDENTIFIER: ${env:RDS_IDENTIFIER}
+      ECS_CLUSTER_ARN: ${env:ECS_CLUSTER_ARN}
+      ECS_SERVICE_ARNS: ${env:ECS_SERVICE_ARNS}
       REGION: ap-northeast-2
     image:
       name: baseimage

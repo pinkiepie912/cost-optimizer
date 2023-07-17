@@ -15,6 +15,8 @@ export AUTOSCALING_NAME_TAGS=
 export EC2_NAME_TAGS=
 export EC2_ENV_TAGS=
 export RDS_IDENTIFIER=
+export ECS_CLUSTER_ARN=
+export ECS_SERVICE_ARNS=
 
 # Build image
 docker build -t ${REPO}:${TAG} .

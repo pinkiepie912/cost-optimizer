@@ -25,6 +25,9 @@ class Config:
 
     rds_identifier: str
 
+    ecs_cluster_arn: str
+    ecs_service_arns: List[str]
+
     region: str
 
     @classmethod
@@ -35,6 +38,8 @@ class Config:
             ec2_name_tags=params["EC2_NAME_TAGS"].split(","),
             ec2_env_tags=params["EC2_ENV_TAGS"].split(","),
             rds_identifier=params["RDS_IDENTIFIER"],
+            ecs_cluster_arn=params["ECS_CLUSTER_ARN"],
+            ecs_service_arns=params["ECS_SERVICE_ARNS"].split(","),
             region=params["REGION"],
         )
 
